@@ -59,9 +59,14 @@ struct proc
   int killed;                 // If non-zero, have been killed
   struct file *ofile[NOFILE]; // Open files
   struct inode *cwd;          // Current directory
-  char name[16];
+  char name[16];              // Process name (debugging)
 
-  // Process name (debugging)
+  struct
+  {
+    int level;
+    int index;
+
+  } mlfq;
 };
 
 // Process memory is laid out contiguously, low addresses first:
